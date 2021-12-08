@@ -3,11 +3,7 @@ import "./InterviewerListItem.scss";
 import classNames from "classnames";
 
 
-const interviewer = {
-  id: 1,
-  name: "Sylvia Palmer",
-  avatar: "https://i.imgur.com/LpaY82x.png"
-};
+
 
 export default function InterviewerListItem(props) {
  
@@ -16,13 +12,13 @@ export default function InterviewerListItem(props) {
   });
 
   return (
-    <li className={interviewerClass} onClick={() => props.setInterviewer(interviewer.id)}>
+    <li className={interviewerClass} onClick={() => props.setInterviewer(props.id)}>
     <img
       className="interviewers__item-image"
-      src={interviewer.avatar}
-      alt={interviewer.name}
+      src={props.avatar}
+      alt={props.name}
     />
-    {interviewer.name && props.selected}
+    {props.name && props.selected}
   </li>
   );
 }
