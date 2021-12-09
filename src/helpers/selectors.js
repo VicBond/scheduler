@@ -1,16 +1,17 @@
-export function getAppointmentsForDay(state, day) {
+export const getAppointmentsForDay = (state, day) => {
+  const filteredDays = state.days.find(elem => elem.name === day);
+
   let result = [];
 
-  const filteredDays = state.days.filter(elem => elem.name === day);
-
-  if(!filteredDays.length){
+  if (!filteredDays) {
     return result;
   }
 
-  if(filteredDays.length){
-    result = filteredDays[0].appointments.map(el => state.appointments[el]);
+  for (const id in state.appointments) {
+    if (filteredDays.appointments.includes(Number(id))) {
+      result.push(state.appointments[id]);
+    }
   }
 
-
   return result;
-}
+};
