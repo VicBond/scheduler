@@ -16,10 +16,12 @@ export default function useVisualMode(initial) {
         return [...history, newMode];
       }
     });
+
     }
 
 
   function back() {
+    
     setHistory(history => {
       const newHistory =
         history.length > 1 ? [...history].slice(0, -1) : [...history];
