@@ -9,11 +9,6 @@ export const getAppointmentsForDay = (state, day) => {
   if (filteredDays.length){
     result = filteredDays[0].appointments.map(elem => state.appointments[elem]);
   }
-  // for (const id in state.appointments) {
-  //   if (filteredDays.appointments.includes(Number(id))) {
-  //     result.push(state.appointments[id]);
-  //   }
-  // }
 
   return result;
 };
@@ -41,11 +36,6 @@ export const getInterviewersForDay = (state, day) => {
   if (filteredDays.length){
     result = filteredDays[0].interviewers.map(elem => state.interviewers[elem]);
   }
-  // for (const id in state.interviewers) {
-  //   if (filteredDays.interviewers.includes(Number(id))) {
-  //     result.push(state.interviewers[id]);
-  //   }
-  // }
 
   return result;
 };
