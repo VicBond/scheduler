@@ -19,7 +19,6 @@ export default function useVisualMode(initial) {
 
     }
 
-
   function back() {
     
     setHistory(history => {
@@ -36,4 +35,4 @@ export default function useVisualMode(initial) {
     mode, 
     transition, 
     back };
-}
+};
