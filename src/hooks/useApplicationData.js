@@ -10,7 +10,7 @@ export default function useApplicationData() {
     interviewers: {}
   });
 
-  const setDay = day => setState({ ...state, day });
+  const setDay = day => setState(state => ({ ...state, day }));
 
   function bookInterview(id, interview) {
     const appointment = {
@@ -24,31 +24,30 @@ export default function useApplicationData() {
 
     return axios.put(`/api/appointments/${id}`, appointment)
     .then(() => {
-      setState({
+      setState(state => ({
       ...state,
       appointments
-      });
+      }));
     });
     };
 
     function cancelInterview(id) {
-      const nullAppointment = {
+      const appointment = {
         ...state.appointments[id],
-        interview: {...state.appointments[id].interview}
+        interview: null
       }
-      nullAppointment.interview.interviewer = null;
-      nullAppointment.interview.student = null;
+     
       const appointments = {
         ...state.appointments,
-        [id]: nullAppointment
+        [id]: appointment
       };
 
       return axios.delete(`api/appointments/${id}`)
       .then(() => {
-        setState({
+        setState(state => ({
           ...state,
           appointments
-        });
+        }));
       });
     }
 
@@ -58,7 +57,7 @@ export default function useApplicationData() {
       axios.get("/api/appointments"),
       axios.get("/api/interviewers")
     ])
-    .then((all) => {
+    .then(all => {
       setState(prev => ({
         ...prev, 
         days: all[0].data, 
@@ -69,8 +68,13 @@ export default function useApplicationData() {
   }, []);
 
   useEffect(() => {
-    axios.get("/api/days")
-      .then(days => setState(state => ({ ...state, days: days.data })));
+    axios
+      .get("/api/days")
+      .then(days => setState(state => ({ 
+        ...state, 
+        days: days.data 
+      }))
+      );
   }, [state.appointments])
 
   return { 
