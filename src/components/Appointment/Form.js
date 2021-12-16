@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from "components/Button.js"
+import Button from "components/Button"
 import InterviewerList from 'components/InterviewerList';
 
 
@@ -10,6 +10,7 @@ export default function Form(props) {
 
   const reset = () => {
     setStudent("");
+    setError("");
     setInterviewer(null);
   };
 
@@ -33,25 +34,25 @@ export default function Form(props) {
     <form onSubmit={event => event.preventDefault()} autoComplete="off">
       <input
         className="appointment__create-input text--semi-bold"
-        name="name"
+        name={props.student}
         type="text"
         placeholder="Enter Student Name"
         value={student}
         onChange={event => setStudent(event.target.value)}
         data-testid="student-name-input"
       />
-    </form>
     <section className="appointment__validation">{error}</section>
+    </form>
     <InterviewerList
     interviewers={props.interviewers}
     value={interviewer} 
-    onChange={setInterviewer}
+    onChange={(event) => setInterviewer(event)}
     />
   </section>
   <section className="appointment__card-right">
     <section className="appointment__actions">
       <Button danger onClick={cancel}>Cancel</Button>
-      <Button confirm onClick={validate}>Save</Button>
+      <Button confirm onSubmit={event => event.preventDefault()} onClick={validate}>Save</Button>
     </section>
   </section>
 </main>
