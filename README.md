@@ -1,4 +1,5 @@
 # Interview Scheduler
+React application that allows users to book and cancel interviews
 
 ## Final Product
 
