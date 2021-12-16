@@ -1,5 +1,11 @@
 # Interview Scheduler
 
+## Final Product
+
+!['appointment-form'](https://github.com/VicBond/scheduler/blob/master/docs/appointment-form.png)
+!['appointment-form--save'](https://github.com/VicBond/scheduler/blob/master/docs/appointment-form-save.png)
+!['appointment-form--delete'](https://github.com/VicBond/scheduler/blob/master/docs/appointment-form-delete.png)
+
 ## Setup
 
 Install dependencies with `npm install`.
